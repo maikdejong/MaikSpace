@@ -8,15 +8,15 @@
     <h1>Login</h1>
 
     <form method="post" action="{{ path('app_login') }}">
-        {% if error %}
-            <div class="alert alert-danger">
-                {{ error.messageKey|trans(error.messageData, 'security') }}
-            </div>
-        {% endif %}
+{#        {% if app.request.query.get('error') %}#}
+{#            <div class="alert alert-danger">#}
+{#                Invalid credentials.#}
+{#            </div>#}
+{#        {% endif %}#}
 
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" id="email" name="_username" value="{{ last_username }}" required autofocus class="form-control" />
+            <input type="email" id="email" name="_username" value="{{ app.request.query.get('username') }}" required autofocus class="form-control" />
         </div>
 
         <div class="form-group">
@@ -27,11 +27,5 @@
         <div class="form-group">
             <button type="submit" class="btn btn-primary">Login</button>
         </div>
-
-        {% if app.request.query.get('error') %}
-            <div class="alert alert-danger">
-                Invalid credentials.
-            </div>
-        {% endif %}
     </form>
 {% endblock %}

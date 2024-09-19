@@ -16,6 +16,10 @@ class SecurityController extends AbstractController
     #[Route("/register", name: "app_register")]
     public function register(Request $request, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $entityManager)
     {
+        if ($this->getUser()) {
+            return $this->redirectToRoute('app_login');
+        }
+
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
@@ -40,10 +44,6 @@ class SecurityController extends AbstractController
     #[Route("/login", name: "app_login")]
     public function login()
     {
-//        if ($this->getUser()) {
-//            return $this->redirectToRoute('home');
-//        }
-
         return $this->render('security/login.html.twig');
     }
 }
