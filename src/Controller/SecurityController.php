@@ -21,6 +21,8 @@ class SecurityController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $user->setPlainPassword($form->get('plainPassword')->getData());
+
             $hashedPassword = $passwordHasher->hashPassword($user, $user->getPlainPassword());
             $user->setPassword($hashedPassword);
 
@@ -38,6 +40,10 @@ class SecurityController extends AbstractController
     #[Route("/login", name: "app_login")]
     public function login()
     {
+//        if ($this->getUser()) {
+//            return $this->redirectToRoute('home');
+//        }
+
         return $this->render('security/login.html.twig');
     }
 }
