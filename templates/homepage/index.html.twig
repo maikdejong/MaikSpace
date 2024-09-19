@@ -8,8 +8,11 @@
     <h1>Homepage</h1>
 
     <div class="buttons">
-        <a href="{{ path('app_register') }}" class="btn btn-primary">Register</a>
-        <a href="{{ path('app_login') }}" class="btn btn-primary">Login</a>
+        {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+            <a href="{{ path('app_register') }}" class="btn btn-primary">Register</a>
+            <a href="{{ path('app_login') }}" class="btn btn-primary">Login</a>
+        {% endif %}
+
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             <a href="{{ path('app_logout') }}" class="btn btn-danger">Logout</a>
         {% endif %}
