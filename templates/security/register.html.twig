@@ -9,7 +9,7 @@
     {{ form_row(registrationForm.email) }}
     {{ form_row(registrationForm.plainPassword.first) }}
     {{ form_row(registrationForm.plainPassword.second) }}
-    <p>already have an account? <a href=\"{{ path('app_login') }}\">login</a></p>
+    <p>already have an account? <a href="{{ path('app_login') }}">login</a></p>
     {{ form_end(registrationForm) }}
 
 {% endblock %}

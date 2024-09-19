@@ -1,0 +1,17 @@
+{# templates/homepage/index.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block body %}
+    <h1>Homepage</h1>
+
+    <div class="buttons">
+        <a href="{{ path('app_register') }}" class="btn btn-primary">Register</a>
+        <a href="{{ path('app_login') }}" class="btn btn-primary">Login</a>
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <a href="{{ path('app_logout') }}" class="btn btn-danger">Logout</a>
+        {% endif %}
+    </div>
+{% endblock %}
