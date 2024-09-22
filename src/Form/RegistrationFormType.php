@@ -41,9 +41,6 @@ class RegistrationFormType extends AbstractType
                 ],
                 'invalid_message' => 'The password fields must match.',
                 'mapped' => false,
-            ])
-            ->add('submit', SubmitType::class, [
-                'label' => 'Register',
             ]);
     }
 

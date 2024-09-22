@@ -3,13 +3,63 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f2f5;
+        }
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .form-group label {
+            margin-bottom: 5px;
+        }
+        .btn {
+            margin-top: 10px;
+            padding: 10px 20px;
+            width: 100%;
+        }
+        p a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        p a:hover {
+            text-decoration: underline;
+        }
+    </style>
 
-    {{ form_start(registrationForm) }}
-    {{ form_row(registrationForm.email) }}
-    {{ form_row(registrationForm.plainPassword.first) }}
-    {{ form_row(registrationForm.plainPassword.second) }}
-    <p>already have an account? <a href="{{ path('app_login') }}">login</a></p>
-    {{ form_end(registrationForm) }}
+    <div class="container">
+        <h1>Register</h1>
 
+        {{ form_start(registrationForm) }}
+        <div class="form-group">
+            {{ form_row(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(registrationForm.plainPassword.first, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(registrationForm.plainPassword.second, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <p>Already have an account? <a href="{{ path('app_login') }}">Login</a></p>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Register</button>
+        </div>
+        {{ form_end(registrationForm) }}
+    </div>
 {% endblock %}

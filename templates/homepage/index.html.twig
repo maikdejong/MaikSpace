@@ -1,19 +1,41 @@
-{# templates/homepage/index.html.twig #}
-
 {% extends 'base.html.twig' %}
 
 {% block title %}Homepage{% endblock %}
 
 {% block body %}
-    <h1>Homepage</h1>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f2f5;
+        }
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .btn {
+            margin: 5px;
+            padding: 10px 20px;
+        }
+    </style>
 
-    <div class="buttons">
+    <div class="container">
         {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+            <h1>Verify yourself</h1>
             <a href="{{ path('app_register') }}" class="btn btn-primary">Register</a>
             <a href="{{ path('app_login') }}" class="btn btn-primary">Login</a>
         {% endif %}
 
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            {% if app.user %}
+                <h1>Welcome to the homepage {{ app.user.email }}</h1>
+            {% endif %}
             <a href="{{ path('app_logout') }}" class="btn btn-danger">Logout</a>
         {% endif %}
     </div>

@@ -1,33 +1,73 @@
-{# templates/security/login.html.twig #}
-
 {% extends 'base.html.twig' %}
 
 {% block title %}Login{% endblock %}
 
 {% block body %}
-    <h1>Login</h1>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f2f5;
+        }
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .form-group label {
+            margin-bottom: 5px;
+        }
+        .btn {
+            margin-top: 10px;
+            padding: 10px 20px;
+            width: 100%;
+        }
+        p a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        p a:hover {
+            text-decoration: underline;
+        }
+    </style>
 
-    <form method="post" action="{{ path('app_login') }}">
-{#        {% if app.request.query.get('error') %}#}
-{#            <div class="alert alert-danger">#}
-{#                Invalid credentials.#}
-{#            </div>#}
-{#        {% endif %}#}
+    <div class="container">
+        <h1>Login</h1>
 
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="_username" value="{{ app.request.query.get('username') }}" required autofocus class="form-control" />
-        </div>
+        <form method="post" action="{{ path('app_login') }}">
+            {% if app.request.query.get('error') %}
+                <div class="alert alert-danger">
+                    Invalid credentials.
+                </div>
+            {% endif %}
 
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="_password" required class="form-control" />
-        </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="_username" value="{{ app.request.query.get('username') }}" required autofocus class="form-control" />
+            </div>
 
-        <p>are you new here? <a href="{{ path('app_register') }}">register</a></p>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="_password" required class="form-control" />
+            </div>
 
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary">Login</button>
-        </div>
-    </form>
+            <p>Are you new here? <a href="{{ path('app_register') }}">Register</a></p>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Login</button>
+            </div>
+        </form>
+    </div>
 {% endblock %}

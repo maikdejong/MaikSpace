@@ -10,11 +10,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface;
 
 class SecurityController extends AbstractController
 {
     #[Route("/register", name: "app_register")]
-    public function register(Request $request, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $entityManager)
+    public function register(
+        Request $request,
+        UserPasswordHasherInterface $passwordHasher,
+        EntityManagerInterface $entityManager,
+        VerifyEmailHelperInterface $verifyEmailHelper)
     {
         if ($this->getUser()) {
             return $this->redirectToRoute('app_login');
@@ -33,12 +38,27 @@ class SecurityController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_login');
+            $signatureComponents = $verifyEmailHelper->generateSignature(
+                'app_verify_email',
+                $user->getId(),
+                $user->getEmail(),
+                ['id' => $user->getId()]
+            );
+
+            $this->addFlash('success', 'Confirm your email at: '.$signatureComponents->getSignedUrl());
+
+            return $this->redirectToRoute('app_homepage');
         }
 
         return $this->render('security/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
+    }
+
+    #[Route("/verify", name: "app_verify_email")]
+    public function verifyUserEmail()
+    {
+        //todo
     }
 
     #[Route("/login", name: "app_login")]
