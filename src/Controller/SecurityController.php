@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 
+use AllowDynamicProperties;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -12,14 +13,20 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface;
 
+#[AllowDynamicProperties]
 class SecurityController extends AbstractController
-{
-    #[Route("/register", name: "app_register")]
-    public function register(
-        Request $request,
+{    public function __construct(
         UserPasswordHasherInterface $passwordHasher,
-        EntityManagerInterface $entityManager,
-        VerifyEmailHelperInterface $verifyEmailHelper)
+        EntityManagerInterface $em,
+        VerifyEmailHelperInterface $verifyEmailHelper
+    ) {
+        $this->passwordHasher = $passwordHasher;
+        $this->em = $em;
+        $this->verifyEmailHelper = $verifyEmailHelper;
+    }
+
+    #[Route("/register", name: "app_register")]
+    public function register(Request $request)
     {
         if ($this->getUser()) {
             return $this->redirectToRoute('app_login');
@@ -32,13 +39,13 @@ class SecurityController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $user->setPlainPassword($form->get('plainPassword')->getData());
 
-            $hashedPassword = $passwordHasher->hashPassword($user, $user->getPlainPassword());
+            $hashedPassword = $this->passwordHasher->hashPassword($user, $user->getPlainPassword());
             $user->setPassword($hashedPassword);
 
-            $entityManager->persist($user);
-            $entityManager->flush();
+            $this->em->persist($user);
+            $this->em->flush();
 
-            $signatureComponents = $verifyEmailHelper->generateSignature(
+            $signatureComponents = $this->verifyEmailHelper->generateSignature(
                 'app_verify_email',
                 $user->getId(),
                 $user->getEmail(),
