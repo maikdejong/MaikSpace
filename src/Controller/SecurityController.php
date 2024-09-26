@@ -54,7 +54,7 @@ class SecurityController extends AbstractController
 
             $this->addFlash('success', 'Confirm your email at: '.$signatureComponents->getSignedUrl());
 
-            return $this->redirectToRoute('app_homepage');
+            return $this->redirectToRoute('app_login');
         }
 
         return $this->render('security/register.html.twig', [
