@@ -21,7 +21,6 @@ class SecurityController extends AbstractController
         private readonly UserPasswordHasherInterface $passwordHasher,
         private readonly EntityManagerInterface $em,
         private readonly VerifyEmailHelperInterface $verifyEmailHelper,
-        private readonly Request $request,
         private readonly UserRepository $userRepository,
     ) {
     }
@@ -64,15 +63,15 @@ class SecurityController extends AbstractController
     }
 
     #[Route("/verify", name: "app_verify_email")]
-    public function verifyUserEmail(): RedirectResponse
+    public function verifyUserEmail(Request $request): RedirectResponse
     {
-        $user = $this->userRepository->find($this->request->query->get('id'));
+        $user = $this->userRepository->find($request->query->get('id'));
         if (!$user) {
             throw $this->createNotFoundException();
         }
         try {
             $this->verifyEmailHelper->validateEmailConfirmation(
-                $this->request->getUri(),
+                $request->getUri(),
                 $user->getId(),
                 $user->getEmail(),
             );
