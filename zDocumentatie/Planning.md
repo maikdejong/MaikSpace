@@ -16,10 +16,9 @@
 
 - Flowcharts
 
-- Technisch ontwerp
-
 **Sept. 26 --> Okt. 03**
 
 - UI layouts
+- Technisch ontwerp
 
 ---

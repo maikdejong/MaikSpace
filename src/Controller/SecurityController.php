@@ -39,6 +39,17 @@ class SecurityController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $user->setPlainPassword($form->get('plainPassword')->getData());
 
+            $email = $form->get('email')->getData();
+
+            $duplicateEmail = $this->em->getRepository(User::class)->findOneBy([
+                'email' => $email,
+            ]);
+
+            if ($duplicateEmail) {
+                $this->addFlash('error', sprintf('User with email address %s already exists', $email));
+                return $this->redirectToRoute('app_register');
+            }
+
             $hashedPassword = $this->passwordHasher->hashPassword($user, $user->getPlainPassword());
             $user->setPassword($hashedPassword);
 
