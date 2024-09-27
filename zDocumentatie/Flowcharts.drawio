@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" version="24.7.16">
   <diagram name="Page-1" id="1DBc8dPQSUgd4bEL02zA">
-    <mxGraphModel dx="3240" dy="2422" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#66B2FF" math="0" shadow="0">
+    <mxGraphModel dx="2284" dy="1893" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#66B2FF" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -130,14 +130,110 @@
         <mxCell id="B9S9Ff7O9c7iUJAFCNQQ-82" value="Nee" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="570" y="560" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="HIvW9K1EiDW5H_aIbrcw-1" value="Flowchart onderdelen:&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Acount setup&lt;br&gt;Admin paneel&lt;br&gt;&lt;br&gt;Home -&amp;gt; Instellingen&lt;/div&gt;&lt;div&gt;Home -&amp;gt; Profiel : foto&#39;s etc&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="-410" y="-300" width="320" height="220" as="geometry" />
-        </mxCell>
         <mxCell id="HIvW9K1EiDW5H_aIbrcw-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="HIvW9K1EiDW5H_aIbrcw-3" target="B9S9Ff7O9c7iUJAFCNQQ-67" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="HIvW9K1EiDW5H_aIbrcw-3" value="Profielweergave" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="qv_reojsGtixaLWI4rcD-16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="HIvW9K1EiDW5H_aIbrcw-3" target="qv_reojsGtixaLWI4rcD-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="qv_reojsGtixaLWI4rcD-18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="HIvW9K1EiDW5H_aIbrcw-3" target="qv_reojsGtixaLWI4rcD-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HIvW9K1EiDW5H_aIbrcw-3" value="Startpagina" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="370" y="-270" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="qv_reojsGtixaLWI4rcD-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="qv_reojsGtixaLWI4rcD-5" target="qv_reojsGtixaLWI4rcD-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="qv_reojsGtixaLWI4rcD-5" value="Wachtwoord vergeten?" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="170" y="430" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="qv_reojsGtixaLWI4rcD-7" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="B9S9Ff7O9c7iUJAFCNQQ-17" target="qv_reojsGtixaLWI4rcD-5">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="220" y="470" as="sourcePoint" />
+            <mxPoint x="330" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qv_reojsGtixaLWI4rcD-13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="qv_reojsGtixaLWI4rcD-8" target="qv_reojsGtixaLWI4rcD-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="qv_reojsGtixaLWI4rcD-8" value="Email verstuurd met nieuw wachtwoord" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-30" y="430" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="qv_reojsGtixaLWI4rcD-14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="qv_reojsGtixaLWI4rcD-12" target="B9S9Ff7O9c7iUJAFCNQQ-58">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="qv_reojsGtixaLWI4rcD-12" value="Log in" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-30" y="290" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="qv_reojsGtixaLWI4rcD-33" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="qv_reojsGtixaLWI4rcD-15" target="qv_reojsGtixaLWI4rcD-32">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="qv_reojsGtixaLWI4rcD-37" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="qv_reojsGtixaLWI4rcD-15" target="qv_reojsGtixaLWI4rcD-36">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="qv_reojsGtixaLWI4rcD-15" value="Profiel instellingen" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="570" y="-270" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="qv_reojsGtixaLWI4rcD-20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=classic;" edge="1" parent="1" source="qv_reojsGtixaLWI4rcD-17" target="qv_reojsGtixaLWI4rcD-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="qv_reojsGtixaLWI4rcD-17" value="Andere gebruikers bekijken" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="370" y="-410" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="qv_reojsGtixaLWI4rcD-22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=classic;" edge="1" parent="1" source="qv_reojsGtixaLWI4rcD-19" target="qv_reojsGtixaLWI4rcD-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="qv_reojsGtixaLWI4rcD-19" value="Gebruikersprofiel bekijken" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="170" y="-410" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="qv_reojsGtixaLWI4rcD-21" value="Reacties plaatsen /&lt;br&gt;Berichten &#39;liken&#39;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-30" y="-410" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="qv_reojsGtixaLWI4rcD-23" value="Gebruiker (ont)volgen" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-30" y="-510" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="qv_reojsGtixaLWI4rcD-25" value="Gebruiker blokkeren" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-30" y="-310" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="qv_reojsGtixaLWI4rcD-27" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="qv_reojsGtixaLWI4rcD-25" target="qv_reojsGtixaLWI4rcD-19">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="110" y="-280" as="sourcePoint" />
+            <mxPoint x="160" y="-330" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qv_reojsGtixaLWI4rcD-28" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="qv_reojsGtixaLWI4rcD-23" target="qv_reojsGtixaLWI4rcD-19">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="140" y="-400" as="sourcePoint" />
+            <mxPoint x="190" y="-450" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qv_reojsGtixaLWI4rcD-35" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="qv_reojsGtixaLWI4rcD-29" target="qv_reojsGtixaLWI4rcD-34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="qv_reojsGtixaLWI4rcD-39" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="qv_reojsGtixaLWI4rcD-29" target="qv_reojsGtixaLWI4rcD-38">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="qv_reojsGtixaLWI4rcD-29" value="Profieloverzicbt" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="570" y="-410" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="qv_reojsGtixaLWI4rcD-31" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=1;entryDx=0;entryDy=0;exitX=1;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="HIvW9K1EiDW5H_aIbrcw-3" target="qv_reojsGtixaLWI4rcD-29">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="510" y="-280" as="sourcePoint" />
+            <mxPoint x="560" y="-330" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qv_reojsGtixaLWI4rcD-32" value="Account prive/openbaar maken" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="570" y="-130" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="qv_reojsGtixaLWI4rcD-34" value="- Post verwijderen&lt;div&gt;- Tekst van post aanpassen&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="770" y="-410" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="qv_reojsGtixaLWI4rcD-36" value="&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;- Biografie&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;- Profielfoto&lt;/div&gt;&lt;div&gt;- Gebruikersnaam&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="770" y="-270" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="qv_reojsGtixaLWI4rcD-38" value="Post maken" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="570" y="-550" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
