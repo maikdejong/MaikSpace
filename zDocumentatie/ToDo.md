@@ -3,7 +3,6 @@
 
 ## DOING:
 
-- duplicate email: email exists already blabla, FORGOT PASSWORD? -> forgotpassword
 - Wachtwoord vergeten -> email met nieuw wachtwoord -> verificatie -> nieuwe wachtwoord op de user zetten
 
 
@@ -24,6 +23,8 @@
 - error weergeven wanneer email bezet
 - Login scherm
 - Verkeerde inloggegevens error
+
+- duplicate email: email exists already blabla, FORGOT PASSWORD? -> forgotpassword
 
 
 
