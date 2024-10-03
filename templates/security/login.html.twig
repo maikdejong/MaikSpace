@@ -47,10 +47,8 @@
         <h1>Login</h1>
 
         <form method="post" action="{{ path('app_login') }}">
-            {% if app.request.query.get('error') %}
-                <div class="alert alert-danger">
-                    Invalid credentials.
-                </div>
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
             {% endif %}
 
             <div class="form-group">

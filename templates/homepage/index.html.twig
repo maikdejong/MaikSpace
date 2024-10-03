@@ -28,8 +28,8 @@
     <div class="container">
         {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
             <h1>Verify yourself</h1>
-            <a href="{{ path('app_register') }}" class="btn btn-primary">Register</a>
-            <a href="{{ path('app_login') }}" class="btn btn-primary">Login</a>
+{#            <a href="{{ path('app_register') }}" class="btn btn-primary">Register</a>#}
+            <a href="{{ path('app_login') }}" class="btn btn-primary">Login | Register</a>
         {% endif %}
 
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
