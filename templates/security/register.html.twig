@@ -52,9 +52,7 @@
         {% for flashError in app.flashes('error') %}
             <div class="alert alert-danger" role="alert">
                 {{ flashError }}
-                {% if flashError matches '/User with email address .* already exists./' %}
-                    Did you <a href="{{ path('app_forgot_password') }}">forget your password</a>?
-                {% endif %}
+                <br>Did you <a href="{{ path('app_forgot_password') }}">forget your password</a>?
             </div>
         {% endfor %}
 

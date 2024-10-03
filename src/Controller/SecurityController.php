@@ -48,7 +48,7 @@ class SecurityController extends AbstractController
             ]);
 
             if ($duplicateEmail) {
-                $this->addFlash('error', sprintf('User with email address %s already exists.', $email));
+                $this->addFlash('error', 'This email is already in use.');
                 return $this->redirectToRoute('app_register');
             }
 

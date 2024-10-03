@@ -48,7 +48,9 @@
 
         <form method="post" action="{{ path('app_login') }}">
             {% if error %}
-                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}
+                    <br>Did you <a href="{{ path('app_forgot_password') }}">forget your password</a>?
+                </div>
             {% endif %}
 
             <div class="form-group">
