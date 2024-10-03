@@ -3,7 +3,6 @@
 
 ## DOING:
 
-- Wachtwoord vergeten -> email met nieuw wachtwoord -> verificatie -> nieuwe wachtwoord op de user zetten
 
 
 
@@ -25,6 +24,7 @@
 - Verkeerde inloggegevens error
 
 - duplicate email: email exists already blabla, FORGOT PASSWORD? -> forgotpassword
+- Wachtwoord vergeten request dmv email
 
 
 
