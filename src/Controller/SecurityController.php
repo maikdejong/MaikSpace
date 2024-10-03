@@ -99,12 +99,6 @@ class SecurityController extends AbstractController
         return $this->redirectToRoute('app_login');
     }
 
-    #[Route("/forgot-password", name: "app_forgot_password")]
-    public function forgotPassword(Request $request): Response
-    {
-        return $this->render('security/forgot_password.html.twig');
-    }
-
     #[Route("/login", name: "app_login")]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {

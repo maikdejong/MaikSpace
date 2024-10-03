@@ -49,7 +49,7 @@
         <form method="post" action="{{ path('app_login') }}">
             {% if error %}
                 <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}
-                    <br>Did you <a href="{{ path('app_forgot_password') }}">forget your password</a>?
+                    <br>Did you <a href="{{ path('app_forgot_password_request') }}">forget your password</a>?
                 </div>
             {% endif %}
 
@@ -67,6 +67,9 @@
 
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Login</button>
+
+{#                TODO: onderstaande regel weghalen na succesvolle test#}
+                Did you <a href="{{ path('app_forgot_password_request') }}">forget your password</a>?
             </div>
         </form>
     </div>
