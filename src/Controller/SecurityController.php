@@ -48,7 +48,7 @@ class SecurityController extends AbstractController
             ]);
 
             if ($duplicateEmail) {
-                $this->addFlash('error', sprintf('User with email address %s already exists', $email));
+                $this->addFlash('error', sprintf('User with email address %s already exists.', $email));
                 return $this->redirectToRoute('app_register');
             }
 
@@ -97,6 +97,12 @@ class SecurityController extends AbstractController
 
         $this->addFlash('success', 'Account Verified! You can now log in.');
         return $this->redirectToRoute('app_login');
+    }
+
+    #[Route("/forgot-password", name: "app_forgot_password")]
+    public function forgotPassword(Request $request): Response
+    {
+        return $this->render('security/forgot_password.html.twig');
     }
 
     #[Route("/login", name: "app_login")]

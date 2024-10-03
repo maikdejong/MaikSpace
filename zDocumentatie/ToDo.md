@@ -4,19 +4,26 @@
 ## DOING:
 
 - duplicate email: email exists already blabla, FORGOT PASSWORD? -> forgotpassword
+- Wachtwoord vergeten -> email met nieuw wachtwoord -> verificatie -> nieuwe wachtwoord op de user zetten
 
 
 
 ## TODO:
 
-- Email verification to register, testen met MailHog (functie bestaat al)
-- optional 2fa
-- Wachtwoord vergeten -> email met nieuw wachtwoord -> verificatie -> nieuwe wachtwoord op de user zetten
-- Flashes in de base.html.twig stylen
-- CustomLoginAuthenticator oid, alleen inloggen wanneer $user->getVerified = true.
+- Bevestigings e-mail voor afronding accountregistratie (functie is er al)
+- Flash email bevestiging fixen
+- Optionele 2FA instelling
+- Bedenken wat er moet gebeuren als de user zijn email niet verified.
 
 
 
 ## DONE:
 
-- duplicate entries same email address
+
+- Account aanmaken dmv e-mail & wachtwoord
+- error weergeven wanneer email bezet
+- Login scherm
+- Verkeerde inloggegevens error
+
+
+
