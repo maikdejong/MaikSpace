@@ -7,11 +7,14 @@ use AllowDynamicProperties;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Repository\UserRepository;
+use App\Security\EmailVerifier;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mime\Address;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
@@ -20,83 +23,62 @@ use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface;
 
 class SecurityController extends AbstractController
 {    public function __construct(
-        private readonly UserPasswordHasherInterface $passwordHasher,
+        private readonly UserPasswordHasherInterface $userPasswordHasher,
         private readonly EntityManagerInterface $em,
-        private readonly VerifyEmailHelperInterface $verifyEmailHelper,
-        private readonly UserRepository $userRepository,
+        private readonly EmailVerifier $emailVerifier,
     ) {
     }
 
-    #[Route("/register", name: "app_register")]
-    public function register(Request $request)
+    #[Route('/register', name: 'app_register')]
+    public function register(Request $request, Security $security): Response
     {
-        if ($this->getUser()) {
-            return $this->redirectToRoute('app_login');
-        }
-
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $user->setPlainPassword($form->get('plainPassword')->getData());
+            /** @var string $plainPassword */
+            $plainPassword = $form->get('plainPassword')->getData();
 
-            $email = $form->get('email')->getData();
-
-            $duplicateEmail = $this->em->getRepository(User::class)->findOneBy([
-                'email' => $email,
-            ]);
-
-            if ($duplicateEmail) {
-                $this->addFlash('error', 'This email is already in use.');
-                return $this->redirectToRoute('app_register');
-            }
-
-            $hashedPassword = $this->passwordHasher->hashPassword($user, $user->getPlainPassword());
-            $user->setPassword($hashedPassword);
+            $user->setPassword($this->userPasswordHasher->hashPassword($user, $plainPassword));
 
             $this->em->persist($user);
             $this->em->flush();
 
-            $signatureComponents = $this->verifyEmailHelper->generateSignature(
-                'app_verify_email',
-                $user->getId(),
-                $user->getEmail(),
-                ['id' => $user->getId()]
+            $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
+                (new TemplatedEmail())
+                    ->from(new Address('maik-de-jong@live.nl', 'MaikMail Registration'))
+                    ->to((string) $user->getEmail())
+                    ->subject('Please Confirm your Email')
+                    ->htmlTemplate('registration/confirmation_email.html.twig')
             );
 
-            $this->addFlash('success', 'Confirm your email at: '.$signatureComponents->getSignedUrl());
-
-            return $this->redirectToRoute('app_login');
+            return $security->login($user, 'form_login', 'main');
         }
 
         return $this->render('security/register.html.twig', [
-            'registrationForm' => $form->createView(),
+            'registrationForm' => $form,
         ]);
     }
 
-    #[Route("/verify", name: "app_verify_email")]
-    public function verifyUserEmail(Request $request): RedirectResponse
+    #[Route('/verify/email', name: 'app_verify_email')]
+    public function verifyUserEmail(Request $request): Response
     {
-        $user = $this->userRepository->find($request->query->get('id'));
-        if (!$user) {
-            throw $this->createNotFoundException();
-        }
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
         try {
-            $this->verifyEmailHelper->validateEmailConfirmation(
-                $request->getUri(),
-                $user->getId(),
-                $user->getEmail(),
-            );
-        } catch (VerifyEmailExceptionInterface $e) {
-            $this->addFlash('error', $e->getReason());
+            /** @var User $user */
+            $user = $this->getUser();
+            $this->emailVerifier->handleEmailConfirmation($request, $user);
+        } catch (VerifyEmailExceptionInterface $exception) {
+            $this->addFlash('verify_email_error', $exception->getReason());
+
             return $this->redirectToRoute('app_register');
         }
-        $user->setVerified(true);
-        $this->em->flush();
 
-        $this->addFlash('success', 'Account Verified! You can now log in.');
-        return $this->redirectToRoute('app_login');
+        $this->addFlash('success', 'Your email address has been verified.');
+
+        return $this->redirectToRoute('app_homepage');
     }
 
     #[Route("/login", name: "app_login")]

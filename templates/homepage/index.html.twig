@@ -26,6 +26,17 @@
     </style>
 
     <div class="container">
+        {% for flash in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ flash }}
+            </div>
+        {% endfor %}
+        {% for flashError in app.flashes('error') %}
+            <div class="alert alert-danger" role="alert">
+                {{ flashError }}
+            </div>
+        {% endfor %}
+
         {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
             <h1>Verify yourself</h1>
             <a href="{{ path('app_register') }}" class="btn btn-primary">Register</a>

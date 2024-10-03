@@ -57,19 +57,19 @@
         {% endfor %}
 
         {{ form_start(registrationForm) }}
+
         <div class="form-group">
             {{ form_row(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
         </div>
         <div class="form-group">
-            {{ form_row(registrationForm.plainPassword.first, {'attr': {'class': 'form-control'}}) }}
+            {{ form_row(registrationForm.plainPassword, {'attr': {'class': 'form-control'}}) }}
         </div>
-        <div class="form-group">
-            {{ form_row(registrationForm.plainPassword.second, {'attr': {'class': 'form-control'}}) }}
-        </div>
+
         <p>Already have an account? <a href="{{ path('app_login') }}">Login</a></p>
         <div class="form-group">
             <button type="submit" class="btn btn-primary">Register</button>
         </div>
+
         {{ form_end(registrationForm) }}
     </div>
 {% endblock %}

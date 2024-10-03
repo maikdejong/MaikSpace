@@ -6,13 +6,11 @@
 
 
 
+
 ## TODO:
 
-- Bevestigings e-mail voor afronding accountregistratie (functie is er al)
-- Flash email bevestiging fixen
 - Optionele 2FA instelling
 - Bedenken wat er moet gebeuren als de user zijn email niet verified.
-
 
 
 ## DONE:
@@ -22,9 +20,9 @@
 - error weergeven wanneer email bezet
 - Login scherm
 - Verkeerde inloggegevens error
-
-- duplicate email: email exists already blabla, FORGOT PASSWORD? -> forgotpassword
 - Wachtwoord vergeten request dmv email
+- Bevestigings e-mail voor afronding accountregistratie (functie is er al)
+- Flash email bevestiging fixen
 
 
-
+# User settings:
