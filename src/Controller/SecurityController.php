@@ -9,6 +9,7 @@ use App\Form\RegistrationFormType;
 use App\Repository\UserRepository;
 use App\Security\EmailVerifier;
 use Doctrine\ORM\EntityManagerInterface;
+use Scheb\TwoFactorBundle\Security\TwoFactor\Provider\Totp\TotpAuthenticatorInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
@@ -101,5 +102,16 @@ class SecurityController extends AbstractController
     public function logout()
     {
         // symfony handles this
+    }
+
+    #[Route("/enable-2f", name: "app_2fa_enable")]
+    public function enable2fa(TotpAuthenticatorInterface $totpAuthenticator)
+    {
+        $user = $this->getUser();
+        if (!$user->isTotpAuthenticationEnabled()) {
+            $user->setTotpSecret($totpAuthenticator->generateSecret());
+            $this->em->flush();
+        }
+        dd($user);
     }
 }

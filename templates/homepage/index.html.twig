@@ -47,6 +47,7 @@
             {% if app.user %}
                 <h1>Welcome to the homepage {{ app.user.email }}</h1>
             {% endif %}
+            <a href="{{ path('app_2fa_enable') }}" class="btn btn-primary">Enable 2FA</a>
             <a href="{{ path('app_logout') }}" class="btn btn-danger">Logout</a>
         {% endif %}
     </div>
