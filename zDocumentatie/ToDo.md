@@ -10,6 +10,7 @@
 ## TODO:
 
 - Optionele 2FA instelling
+- GD extension shit fixen
 - Bedenken wat er moet gebeuren als de user zijn email niet verified.
 
 
