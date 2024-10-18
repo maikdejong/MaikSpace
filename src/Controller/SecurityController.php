@@ -3,12 +3,12 @@
 namespace App\Controller;
 
 
-use AllowDynamicProperties;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
-use App\Repository\UserRepository;
 use App\Security\EmailVerifier;
 use Doctrine\ORM\EntityManagerInterface;
+use Endroid\QrCode\Builder\Builder;
+use Scheb\TwoFactorBundle\Model\Totp\TwoFactorInterface;
 use Scheb\TwoFactorBundle\Security\TwoFactor\Provider\Totp\TotpAuthenticatorInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,9 +18,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
-use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface;
 
 class SecurityController extends AbstractController
 {    public function __construct(
@@ -104,14 +104,32 @@ class SecurityController extends AbstractController
         // symfony handles this
     }
 
-    #[Route("/enable-2f", name: "app_2fa_enable")]
-    public function enable2fa(TotpAuthenticatorInterface $totpAuthenticator)
+    #[Route("/enable-2fa", name: "app_2fa_enable")]
+    #[isGranted('ROLE_USER')]
+    public function enable2fa(TotpAuthenticatorInterface $totpAuthenticator): Response
     {
         $user = $this->getUser();
+
         if (!$user->isTotpAuthenticationEnabled()) {
             $user->setTotpSecret($totpAuthenticator->generateSecret());
             $this->em->flush();
         }
-        dd($user);
+
+        return $this->render("security/enable_2fa.html.twig");
+    }
+
+    #[Route("/authentication/2fa/qrcode", name: "app_2fa_qrcode")]
+    #[isGranted('ROLE_USER')]
+    public function displayGoogleAuthenticatorQrCode(TotpAuthenticatorInterface $totpAuthenticator): Response
+    {
+        /** @var TwoFactorInterface $user */
+        $user = $this->getUser();
+
+        $qrCodeContent = $totpAuthenticator->getQRContent($user);
+        $result = Builder::create()
+            ->data($qrCodeContent)
+            ->build();
+
+        return new Response($result->getString(), 200, ['Content-Type' => 'image/png']);
     }
 }
