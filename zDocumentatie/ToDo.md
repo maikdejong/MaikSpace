@@ -3,13 +3,12 @@
 
 ## DOING:
 
-- 2FA Code invulscherm stylen
 
 
 ## TODO:
 
 - Bedenken wat er moet gebeuren als de user zijn email niet verified.
-
+- Alle dubbele CSS in 1 bestand zetten
 
 ## DONE:
 
@@ -27,6 +26,7 @@
 - Optionele 2FA instelling werkend
 - Disable 2FA optie
 - isTotpEnabled toevoegen nadat de user heeft confirmed dat de Qrcode is gescanned
+- 2FA Code invulscherm stylen
 
 
 # User settings:

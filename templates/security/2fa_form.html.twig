@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Two Factor Auth{% endblock %}
+
+{% block body %}
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f2f5;
+        }
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .form input[type="text"], .form input[type="submit"] {
+            margin-top: 10px;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .submit input {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+        .submit input:hover {
+            background-color: #0056b3;
+        }
+        .cancel a {
+            display: block;
+            margin-top: 15px;
+            color: #007bff;
+            text-decoration: none;
+        }
+        .cancel a:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+    <div class="container">
+        <h1>Two Factor Authentication</h1>
+
+        <p>Open your Authenticator app and type in the number.</p>
+
+        {% if authenticationError %}
+            <p>{{ authenticationError|trans(authenticationErrorData, 'SchebTwoFactorBundle') }}</p>
+        {% endif %}
+
+        <form class="form" action="{{ checkPathUrl ? checkPathUrl: path(checkPathRoute) }}" method="post">
+            <p class="widget">
+                <input
+                        id="_auth_code"
+                        type="text"
+                        name="{{ authCodeParameterName }}"
+                        autocomplete="one-time-code"
+                        autofocus
+                />
+            </p>
+
+            {% if displayTrustedOption %}
+                <p class="widget">
+                    <label for="_trusted">
+                        <input id="_trusted" type="checkbox" name="{{ trustedParameterName }}" />
+                        {{ "trusted"|trans({}, 'SchebTwoFactorBundle') }}
+                    </label>
+                </p>
+            {% endif %}
+            {% if isCsrfProtectionEnabled %}
+                <input type="hidden" name="{{ csrfParameterName }}" value="{{ csrf_token(csrfTokenId) }}">
+            {% endif %}
+            <p class="submit">
+                <input type="submit" value="{{ "Login"|trans({}, 'SchebTwoFactorBundle') }}" />
+            </p>
+        </form>
+
+        <p class="cancel">
+            <a href="{{ logoutPath }}">{{ "Cancel"|trans({}, 'SchebTwoFactorBundle') }}</a>
+        </p>
+    </div>
+{% endblock %}
