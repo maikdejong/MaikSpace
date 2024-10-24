@@ -111,10 +111,10 @@ class SecurityController extends AbstractController
         $user = $this->getUser();
 
         //TODO: dit moet weer aangezet worden zodra ik hier verder mee ga.
-//        if (!$user->isTotpAuthenticationEnabled()) {
-//            $user->setTotpSecret($totpAuthenticator->generateSecret());
-//            $this->em->flush();
-//        }
+        if (!$user->isTotpAuthenticationEnabled()) {
+            $user->setTotpSecret($totpAuthenticator->generateSecret());
+            $this->em->flush();
+        }
 
         return $this->render("security/enable_2fa.html.twig");
     }

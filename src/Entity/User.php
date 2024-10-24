@@ -41,7 +41,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
     #[ORM\Column]
     private ?bool $isVerified = false;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?string $totpSecret;
 
 
