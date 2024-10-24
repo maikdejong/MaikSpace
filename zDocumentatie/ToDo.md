@@ -10,7 +10,8 @@
 ## TODO:
 
 - Optionele 2FA instelling
-- GD extension shit fixen
+- GD extension shit fixen, nu ook php-DOM en xlm??
+- Registreren geeft error: column totp_secret cannot be null.
 - Bedenken wat er moet gebeuren als de user zijn email niet verified.
 
 

@@ -4,19 +4,19 @@
 
 **Maak een plan van aanpak met functioneel en technisch ontwerp**
 
-- Processchema's/Flowcharts
+- Processchema's/Flowcharts: visuele weergave van de applicatie-flow
 
-- Plan van aanpak
+- Plan van aanpak: op basis van je planning: de volgorde en de aanpak beschrijven. Evt de volgorde onderbouwen
 
-- Planning
+- Planning: per week wat je verwacht gedaan te hebben
 
-- Technisch ontwerp
+- Technisch ontwerp: eindproduct: uitwerking. Domein nodig? webserver? db? alles hier noteren
 
-- Functioneel ontwerp
+- Functioneel ontwerp: In principe hetzelfde als de flowcharts, maar dan in tekst. Flow met bijbehorende functies beschrijven
 
-- Userinterface layouts
+- Userinterface layouts: wireframes.
 
-- Ontwikkelingomgeving
+- Ontwikkelingomgeving: wat heb ik nodig in het proces?
 
 **Leg een gegevensverzameling/database aan**
 
