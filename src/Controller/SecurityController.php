@@ -118,6 +118,18 @@ class SecurityController extends AbstractController
         return $this->render("security/enable_2fa.html.twig");
     }
 
+    #[Route("/confirm_2fa", name: "app_confirm_2fa")]
+    #[isGranted('ROLE_USER')]
+    public function confirm2fa(TotpAuthenticatorInterface $totpAuthenticator): Response
+    {
+        $user = $this->getUser();
+
+        $user->setIsTotpEnabled(true);
+        $this->em->flush();
+
+        return $this->redirectToRoute('app_homepage');
+    }
+
     #[Route("/disable-2fa", name: "app_2fa_disable")]
     #[isGranted('ROLE_USER')]
     public function disable2fa(TotpAuthenticatorInterface $totpAuthenticator): Response
@@ -126,6 +138,7 @@ class SecurityController extends AbstractController
 
         if ($user->isTotpAuthenticationEnabled()) {
             $user->setTotpSecret(null);
+            $user->setIsTotpEnabled(false);
             $this->em->flush();
         }
 

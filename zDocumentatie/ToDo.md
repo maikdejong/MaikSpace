@@ -6,7 +6,6 @@
 - 2FA Code invulscherm stylen
 
 
-
 ## TODO:
 
 - Bedenken wat er moet gebeuren als de user zijn email niet verified.
@@ -27,6 +26,7 @@
 - GD extension shit fixen
 - Optionele 2FA instelling werkend
 - Disable 2FA optie
+- isTotpEnabled toevoegen nadat de user heeft confirmed dat de Qrcode is gescanned
 
 
 # User settings:

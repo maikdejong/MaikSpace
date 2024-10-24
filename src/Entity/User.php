@@ -42,7 +42,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
     private ?bool $isVerified = false;
 
     #[ORM\Column(nullable: true)]
-    private ?string $totpSecret;
+    private ?string $totpSecret = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?bool $isTotpEnabled = false;
 
 
     public function getId(): ?int
@@ -146,7 +149,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
 
     public function isTotpAuthenticationEnabled(): bool
     {
-        return (bool)$this->totpSecret;
+        return (bool)$this->isTotpEnabled;
     }
 
     public function getTotpAuthenticationUsername(): string
@@ -162,6 +165,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
     public function setTotpSecret(?string $totpSecret): self
     {
         $this->totpSecret = $totpSecret;
+        return $this;
+    }
+
+    public function setIsTotpEnabled(?bool $isTotpEnabled): self
+    {
+        $this->isTotpEnabled = $isTotpEnabled;
         return $this;
     }
 }
