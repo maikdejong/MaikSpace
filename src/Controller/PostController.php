@@ -18,8 +18,24 @@ class PostController extends AbstractController
     #[Route('/', name: 'app_post_index', methods: ['GET'])]
     public function index(PostRepository $postRepository): Response
     {
+        $posts = $postRepository->findBy([], ['createdAt' => 'DESC']); // TODO: ALLE posts waarvan account != private
+        $imagesData = [];
+        $imagesMimeType = [];
+
+        foreach ($posts as $post) {
+            if ($post->getImage()) {
+                $imagesData[] = base64_encode(stream_get_contents($post->getImage()));
+                $imagesMimeType[] = mime_content_type($post->getImage());
+            } else {
+                $imagesData[] = null;
+                $imagesMimeType[] = null;
+            }
+        }
+
         return $this->render('post/index.html.twig', [
-            'posts' => $postRepository->findBy([], ['createdAt' => 'DESC'])
+            'posts' => $posts,
+            'imagesData' => $imagesData,
+            'imagesMimeType' => $imagesMimeType,
         ]);
     }
 
@@ -41,8 +57,7 @@ class PostController extends AbstractController
             $post->setUser($this->getUser());
             $post->setCreatedAt(new \DateTimeImmutable());
 
-            // Handle image upload
-            $imageFile = $form->get('imageFile')->getData();
+            $imageFile = $form->get('image')->getData();
             if ($imageFile) {
                 $post->setImage(file_get_contents($imageFile->getPathname()));
             }

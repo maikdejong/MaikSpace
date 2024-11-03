@@ -8,6 +8,9 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
+use Symfony\Component\Form\FormEvents;
+use Symfony\Component\Form\FormEvent;
 
 class PostType extends AbstractType
 {
@@ -21,12 +24,24 @@ class PostType extends AbstractType
                 'required' => false,
             ])
         ;
+
+        $builder->addEventListener(FormEvents::SUBMIT, function (FormEvent $event) {
+            $post = $event->getData();
+            $form = $event->getForm();
+
+            if (empty($post->getContent()) && empty($form->get('image')->getData())) {
+                $form->addError(new \Symfony\Component\Form\FormError('Please fill in either the content or upload an image.'));
+            }
+        });
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => Post::class,
+            'validation_groups' => function ($form) {
+                return ['Default'];
+            },
         ]);
     }
 }
