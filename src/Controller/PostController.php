@@ -122,7 +122,7 @@ class PostController extends AbstractController
         return new Response(
             $post->getImage(),
             Response::HTTP_OK,
-            ['Content-Type' => 'image/jpeg'] // Pas dit aan naar het juiste content type indien nodig
+            ['Content-Type' => 'image/jpeg']
         );
     }
 }

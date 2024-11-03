@@ -1,6 +1,3 @@
-# User registration/login
-
-
 ## DOING:
 
 
@@ -8,6 +5,7 @@
 ## TODO:
 
 - Misschien alles eerst even simpelweg met knopjes op de homepage kwakken die linken naar de functies
+- 
 - Homepage omtoveren tot iets moois: misschien eerst even wireframes voor maken?
 - Gebruikersprofiel maken (/profile)
 - Gebruikersinstellingenpagina maken (/profile/settings)
@@ -36,7 +34,6 @@
 
 ## DONE:
 
-
 - Account aanmaken dmv e-mail & wachtwoord
 - error weergeven wanneer email bezet
 - Login scherm
@@ -51,6 +48,3 @@
 - Disable 2FA optie
 - isTotpEnabled toevoegen nadat de user heeft confirmed dat de Qrcode is gescanned
 - 2FA Code invulscherm stylen
-
-
-# User settings:
