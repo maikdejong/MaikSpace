@@ -1,27 +1,15 @@
 ## DOING:
 
-- Gebruiker posts laten maken: foto met optioneel tekst, of andersom
-- Gebruiker posts laten verwijderen
-- Gebruiker posts laten aanpassen
+- Gebruikersprofiel maken (/profile)
 
+- Alles nieuwe functionaliteit eerst met knopjes op random plekken. Later op juiste plek zetten
 
 - TODO tags in codebase afhandelen
 
 
 ## TODO:
 
-## Vereist:
-
-
-
-## Wenslijst:
-
-
-- Misschien alles eerst even simpelweg met knopjes op de homepage kwakken die linken naar de functies
-- 
 - Homepage omtoveren tot iets moois: misschien eerst even wireframes voor maken?
-- 
-- Gebruikersprofiel maken (/profile)
 
 - Gebruikersinstellingenpagina maken (/profile/settings)
 - - Biografie aanpassen
@@ -48,7 +36,9 @@
 
 ## DONE:
 
-
+- Gebruiker posts laten maken: foto met optioneel tekst, of andersom
+- Gebruiker posts laten verwijderen
+- Gebruiker posts laten aanpassen
 
 - Wanneer de gebruiker zijn email niet heeft verified mag hij:
 - - GEEN posts maken
