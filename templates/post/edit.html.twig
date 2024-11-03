@@ -1,10 +1,72 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Edit post{% endblock %}
+
 {% block body %}
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f2f5;
+        }
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .form-group label {
+            margin-bottom: 5px;
+        }
+        .btn {
+            margin-top: 10px;
+            padding: 10px 20px;
+            width: 100%;
+        }
+        p a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        p a:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+    <div class="container">
+        <h1>Edit post</h1>
+
+        {{ form_start(form) }}
+        <div class="form-group">
+            {{ form_errors(form) }}
+
+            {{ form_label(form.content, 'Post content') }}
+            {{ form_widget(form.content, {'attr': {'class': 'form-control'}}) }}
+
+            {{ form_label(form.image, 'Insert image') }}
+            {{ form_widget(form.image, {'attr': {'class': 'form-control'}}) }}
+            {% if post.image %}
+                <div class="mb-3">
+                    <label>Huidige afbeelding:</label>
+                    <img src="{{ path('app_post_image', {'id': post.id}) }}"
+                         alt="Huidige afbeelding"
+                         class="img-thumbnail"
+                         style="max-width: 200px">
+                </div>
+            {% endif %}
+        </div>
+        <button class="btn btn-primary">Edit!</button>
+        {{ form_end(form) }}
+    </div>
 
 {% endblock %}
-
-{% block title %}
-
-{% endblock %}
-

@@ -21,8 +21,12 @@ class PostType extends AbstractType
                 'required' => false,
             ])
             ->add('image', FileType::class, [
+                'data_class' => null,
                 'required' => false,
-            ])
+                'mapped' => false,
+                'label' => 'Nieuwe afbeelding uploaden',
+                'help' => 'Laat leeg om huidige afbeelding te behouden'
+            ]);
         ;
 
         $builder->addEventListener(FormEvents::SUBMIT, function (FormEvent $event) {

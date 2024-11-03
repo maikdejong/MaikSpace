@@ -4,6 +4,10 @@
 - Gebruiker posts laten verwijderen
 - Gebruiker posts laten aanpassen
 
+
+- TODO tags in codebase afhandelen
+
+
 ## TODO:
 
 ## Vereist:

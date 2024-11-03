@@ -95,7 +95,7 @@ class PostController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             // Handle image upload
-            $imageFile = $form->get('imageFile')->getData();
+            $imageFile = $form->get('image')->getData();
             if ($imageFile) {
                 $post->setImage(file_get_contents($imageFile->getPathname()));
             }
@@ -134,8 +134,10 @@ class PostController extends AbstractController
             throw $this->createNotFoundException('Geen afbeelding gevonden.');
         }
 
+        $imageData = stream_get_contents($post->getImage());
+
         return new Response(
-            $post->getImage(),
+            $imageData,
             Response::HTTP_OK,
             ['Content-Type' => 'image/jpeg']
         );
