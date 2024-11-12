@@ -56,7 +56,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
     private Collection $posts;
 
     #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
-    private ?Usersettings $usersettings = null;
+    private ?UserSettings $usersettings = null;
 
     public function __construct()
     {
@@ -219,12 +219,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
         return $this;
     }
 
-    public function getUsersettings(): ?Usersettings
+    public function getUserSettings(): ?UserSettings
     {
         return $this->usersettings;
     }
 
-    public function setUsersettings(Usersettings $usersettings): static
+    public function setUserSettings(UserSettings $usersettings): static
     {
         // set the owning side of the relation if necessary
         if ($usersettings->getUser() !== $this) {

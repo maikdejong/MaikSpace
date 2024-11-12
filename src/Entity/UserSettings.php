@@ -23,12 +23,9 @@ class UserSettings
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $username = null;
 
-    #[ORM\Column]
-    private ?int $user_id = null;
-
-    #[ORM\OneToOne(inversedBy: 'usersettings', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(inversedBy: 'userSettings', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
-    private ?user $user = null;
+    private ?User $user = null;
 
     public function getId(): ?int
     {

@@ -1,15 +1,9 @@
 ## DOING:
 
-- Gebruikersprofiel maken (/profile)
-
-- Alles nieuwe functionaliteit eerst met knopjes op random plekken. Later op juiste plek zetten
-
-- TODO tags in codebase afhandelen
+UserSettingsController fixen..
 
 
-## TODO:
-
-- Homepage omtoveren tot iets moois: misschien eerst even wireframes voor maken?
+- Gebruikersprofiel maken (/user)
 
 - Gebruikersinstellingenpagina maken (/profile/settings)
 - - Biografie aanpassen
@@ -19,6 +13,15 @@
 - - Teksten van foto's aanpassen
 - - Hier 2FA inzetten
 - - Profiel private / public zetten
+
+- Alles nieuwe functionaliteit eerst met knopjes op random plekken. Later op juiste plek zetten
+
+- TODO tags in codebase afhandelen
+
+
+## TODO:
+
+- Homepage omtoveren tot iets moois: misschien eerst even wireframes voor maken?
 
 - Lijst met alle users
 - - Users kunnen volgen / ontvolgen
