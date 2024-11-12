@@ -1,20 +1,93 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello UserSettingsController!{% endblock %}
+{% block title %}User settings{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f2f5;
+        }
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+        }
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/home/maik/BPV/MaikSpace/src/Controller/UserSettingsController.php</code></li>
-        <li>Your template at <code>/home/maik/BPV/MaikSpace/templates/user_settings/index.html.twig</code></li>
-    </ul>
-</div>
+        .btn {
+            margin: 5px;
+            padding: 10px 20px;
+        }
+
+        .card .action-buttons {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: none;
+            gap: 5px;
+        }
+
+        .card:hover {
+            background-color: lightgray;
+            font-size: 18px;
+        }
+
+        .card:hover .action-buttons {
+            display: flex;
+        }
+
+        .action-buttons button {
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: white;
+            cursor: pointer;
+        }
+
+        .action-buttons button:hover {
+            background: #eee;
+        }
+    </style>
+
+    <div class="container">
+        <h1>User settings</h1>
+
+        {% for flash in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ flash }}
+            </div>
+        {% endfor %}
+        {% for flashError in app.flashes('error') %}
+            <div class="alert alert-danger" role="alert">
+                {{ flashError }}
+            </div>
+        {% endfor %}
+
+        <a href="{{ path('app_user_settings') }}" class="btn btn-primary">Profielfoto</a>
+        <a href="{{ path('app_user_settings') }}" class="btn btn-primary">button</a>
+        <a href="{{ path('app_user_settings') }}" class="btn btn-primary">button</a>
+        <a href="{{ path('app_user_settings') }}" class="btn btn-primary">button</a>
+        <a href="{{ path('app_user_settings') }}" class="btn btn-primary">button</a>
+
+        <a href="{{ path('app_homepage') }}" class="btn btn-info">Back to home</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.clickable-card').forEach(card => {
+                card.addEventListener('click', function(e) {
+                    if (!e.target.closest('.action-buttons')) {
+                        window.location.href = this.dataset.href;
+                    }
+                });
+            });
+        });
+    </script>
 {% endblock %}

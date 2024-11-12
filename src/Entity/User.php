@@ -55,6 +55,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
     #[ORM\OneToMany(targetEntity: Post::class, mappedBy: 'user', orphanRemoval: true)]
     private Collection $posts;
 
+    #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
+    private ?Usersettings $usersettings = null;
+
     public function __construct()
     {
         $this->posts = new ArrayCollection();
@@ -212,6 +215,23 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
                 $post->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUsersettings(): ?Usersettings
+    {
+        return $this->usersettings;
+    }
+
+    public function setUsersettings(Usersettings $usersettings): static
+    {
+        // set the owning side of the relation if necessary
+        if ($usersettings->getUser() !== $this) {
+            $usersettings->setUser($this);
+        }
+
+        $this->usersettings = $usersettings;
 
         return $this;
     }

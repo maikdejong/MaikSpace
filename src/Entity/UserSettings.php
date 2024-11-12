@@ -23,6 +23,13 @@ class UserSettings
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $username = null;
 
+    #[ORM\Column]
+    private ?int $user_id = null;
+
+    #[ORM\OneToOne(inversedBy: 'usersettings', cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?user $user = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -60,6 +67,18 @@ class UserSettings
     public function setUsername(?string $username): static
     {
         $this->username = $username;
+
+        return $this;
+    }
+
+    public function getUser(): ?user
+    {
+        return $this->user;
+    }
+
+    public function setUser(user $user): static
+    {
+        $this->user = $user;
 
         return $this;
     }
