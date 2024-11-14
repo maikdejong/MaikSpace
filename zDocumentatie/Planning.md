@@ -2,10 +2,9 @@
 
 **Sept. 12 --> Sept. 19**
 
-- ~~Projectvoorstel~~
-- ~~Planning documentatie~~
+- Projectvoorstel
 - Plan van aanpak
-- ~~Ontwikkelomgeving~~
+- Ontwikkelomgeving
 
 **Sept. 19 --> Sept. 26**
 
@@ -20,19 +19,36 @@
 - Technisch ontwerp (niet gelukt, verplaatst)
 
 **Okt. 03 --> Okt. 18**
+
 - veel ziek geweest
 - php-gd extension probleem oplossen (niet gelukt, verplaatst)
+- Programmeren (2FA)
 
-**Okt. 18 --> Okt. 25**
+**Okt. 18 --> Okt. 24**
+
 - Flowcharts (Login)
 - Functioneel ontwerp
 - Ontwikkelomgeving
 - PHP-GD extension probleem oplossen
 - Programmeren (E-mail verificatie en wachtwoord vergeten e-mail)
 
-**Sept. 26 --> Okt. 03**
-- UI layouts (wireframes)
-- Technisch ontwerp
+**Okt. 24 --> Okt. 31**
 
+- Email confirmation programmeren
+
+- Programmeren (error flashes)
+
+**Okt. 31 --> Nov. 07**
+
+- Programmeren (posts)
+
+**Nov. 07 --> Nov. 14**
+
+- Programmeren (UserSettings)
+- Documentatie
+
+**Nov. 14 --> Nov. 21**
+
+- 
 
 ---

@@ -1,3 +1,1 @@
 ## Functioneel ontwerp
-
-

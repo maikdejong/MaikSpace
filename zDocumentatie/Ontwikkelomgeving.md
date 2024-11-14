@@ -18,8 +18,6 @@ De volgende dingen zullen worden gebruikt om dit project te realiseren:
 
 - JavaScript
 
-- Node
-
 - Doctrine
 
 - Git
