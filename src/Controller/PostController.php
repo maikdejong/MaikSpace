@@ -20,22 +20,18 @@ class PostController extends AbstractController
     {
         $posts = $postRepository->findBy([], ['createdAt' => 'DESC']); // TODO: ALLE posts waarvan account != private
         $imagesData = [];
-        $imagesMimeType = [];
 
         foreach ($posts as $post) {
             if ($post->getImage()) {
                 $imagesData[] = base64_encode(stream_get_contents($post->getImage()));
-                $imagesMimeType[] = mime_content_type($post->getImage());
             } else {
                 $imagesData[] = null;
-                $imagesMimeType[] = null;
             }
         }
 
         return $this->render('post/index.html.twig', [
             'posts' => $posts,
             'imagesData' => $imagesData,
-            'imagesMimeType' => $imagesMimeType,
         ]);
     }
 
@@ -45,7 +41,7 @@ class PostController extends AbstractController
     {
         // Check if user is verified
         if (!$this->getUser()->isVerified()) {
-            $this->addFlash('error', 'Je moet eerst je email verifiëren voordat je posts kunt maken.');
+            $this->addFlash('error', 'You must verify your email first.');
             return $this->redirectToRoute('app_post_index');
         }
 

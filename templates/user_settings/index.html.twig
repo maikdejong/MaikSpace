@@ -21,43 +21,22 @@
             box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
         }
 
+        .profile-picture {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
         .btn {
             margin: 5px;
             padding: 10px 20px;
         }
-
-        .card .action-buttons {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            display: none;
-            gap: 5px;
-        }
-
-        .card:hover {
-            background-color: lightgray;
-            font-size: 18px;
-        }
-
-        .card:hover .action-buttons {
-            display: flex;
-        }
-
-        .action-buttons button {
-            padding: 5px 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            background: white;
-            cursor: pointer;
-        }
-
-        .action-buttons button:hover {
-            background: #eee;
-        }
     </style>
 
     <div class="container">
-        <h1>User settings</h1>
+        <h1>User Settings</h1>
 
         {% for flash in app.flashes('success') %}
             <div class="alert alert-success">
@@ -71,11 +50,16 @@
         {% endfor %}
 
         {{ form_start(form) }}
+        {% if imagesData['profile_picture'] is not null %}
+            <img src="{{ path('app_user_settings_image', {'id': user.usersettings.id}) }}" class="profile-picture" alt="Profile Picture">
+        {% else %}
+            <div class="profile-picture" style="background-color: #f0f2f5;"></div>
+        {% endif %}
         {{ form_widget(form) }}
         <button type="submit" class="btn btn-primary">Save Settings</button>
         {{ form_end(form) }}
 
-        <a href="{{ path('app_homepage') }}" class="btn btn-info">Back to home</a>
+        <a href="{{ path('app_homepage') }}" class="btn btn-info">Back to Home</a>
     </div>
 
     <script>

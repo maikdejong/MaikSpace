@@ -19,10 +19,6 @@ De volgende onderdelen zullen worden verzorgd:
 
 - Gebruikers kunnen posts (foto / tekst) uploaden naar hun profiel
 
-- Gebruikers kunnen elkaar volgen / ontvolgen
-
-- Gebruikers kunnen elkaar blokkeren
-
 - Profiel kan aangepast worden (biografie, profielfoto, gebruikersnaam, foto's verwijdert, teksten aangepast)
 
 - Profiel public of private accessible (private = wel vindbaar, niet zichtbaar)
@@ -36,6 +32,10 @@ De volgende onderdelen zullen worden verzorgd:
 **Profiel**
 
 - Statistieken bekijken (aantal volgers/volgend, totale likes, totale ontvangen/verzonden reacties)
+- 
+- Gebruikers kunnen elkaar volgen / ontvolgen
+
+- Gebruikers kunnen elkaar blokkeren
 
 **Feed & filtering**
 

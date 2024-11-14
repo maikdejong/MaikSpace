@@ -46,8 +46,10 @@
         {% endif %}
 
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-            {% if app.user %}
-                <h1>Welcome to the homepage {{ app.user.email }}</h1>
+            {% if app.user.usersettings.getUsername() %}
+                <h1>Welcome to the homepage, {{ app.user.usersettings.getUsername() }}!</h1>
+            {% elseif app.user %}
+                <h1>Welcome to the homepage, {{ app.user }}!</h1>
             {% endif %}
             {% if app.user.isTotpAuthenticationEnabled() %}
                 <a href="{{ path('app_2fa_disable') }}" class="btn btn-danger">Disable 2FA</a>

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Entity\UserSettings;
 use App\Form\UserSettingsType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -13,36 +14,73 @@ use Symfony\Component\Routing\Attribute\Route;
 class UserSettingsController extends AbstractController
 {
     #[Route('/user-settings', name: 'app_user_settings')]
-    public function index(Request $request, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, EntityManagerInterface $entityManager): Response
     {
+        // Check if user is verified
+        if (!$this->getUser()->isVerified()) {
+            $this->addFlash('error', 'You must verify your email first.');
+            return $this->redirectToRoute('app_post_index');
+        }
+
+        $user = $this->getUser();
         $userSettings = $this->getUser()->getUserSettings();
+
+        $imagesData = [];
+
+        if ($userSettings->getProfilePicture()) {
+            $imagesData = [
+                'profile_picture' => $userSettings->getProfilePicture(),
+            ];
+        }
 
         $form = $this->createForm(UserSettingsType::class, $userSettings);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-//            $formData = $form->getData();
-////            dd($formData);
-//            $userSettingsRepository = $entityManager->getRepository(UserSettings::class);
-//
-//            $userSettingsExist = $userSettingsRepository->findBy([
-//                'user' => $this->getUser(),
-//            ]);
-//
-//            if ($userSettingsExist) {
-//                $userSettingsExist->setBio($formData->getBio());
-//            }
-//
-//
-//
-//            $entityManager->persist($userSettingsExist);
-//            $entityManager->flush();
-//            $this->addFlash('success', 'User settings updated successfully.');
-            return $this->redirectToRoute('app_homepage');
+            $username = $form->get('username')->getData();
+            $bio = $form->get('bio')->getData();
+            $imageFile = $form->get('profile_picture')->getData();
+
+            if (!$userSettings) {
+                $userSettings = new UserSettings();
+                /** @var User $user */
+                $userSettings->setUser($user);
+            }
+
+            $userSettings->setBio($bio);
+            $userSettings->setUsername($username);
+            if ($imageFile) {
+                $userSettings->setProfilePicture(file_get_contents($imageFile->getPathname()));
+            }
+
+            $entityManager->persist($userSettings);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'User settings saved successfully!');
+
+            return $this->redirectToRoute('app_user_settings');
         }
 
         return $this->render('user_settings/index.html.twig', [
             'form' => $form->createView(),
+            'imagesData' => $imagesData,
+            'user' => $user,
         ]);
+    }
+
+    #[Route('/{id}/image', name: 'app_user_settings_image', methods: ['GET'])]
+    public function getImage(UserSettings $userSettings): Response
+    {
+        if (!$userSettings->getProfilePicture()) {
+            throw $this->createNotFoundException('Geen afbeelding gevonden.');
+        }
+
+        $imageData = stream_get_contents($userSettings->getProfilePicture());
+
+        return new Response(
+            $imageData,
+            Response::HTTP_OK,
+            ['Content-Type' => 'image/jpeg']
+        );
     }
 }
