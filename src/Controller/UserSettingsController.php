@@ -31,6 +31,10 @@ class UserSettingsController extends AbstractController
             $imagesData = [
                 'profile_picture' => $userSettings->getProfilePicture(),
             ];
+        } else {
+            $imagesData = [
+                'profile_picture' => null,
+            ];
         }
 
         $form = $this->createForm(UserSettingsType::class, $userSettings);
@@ -39,7 +43,6 @@ class UserSettingsController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $username = $form->get('username')->getData();
             $bio = $form->get('bio')->getData();
-            $imageFile = $form->get('profile_picture')->getData();
 
             if (!$userSettings) {
                 $userSettings = new UserSettings();
@@ -49,6 +52,7 @@ class UserSettingsController extends AbstractController
 
             $userSettings->setBio($bio);
             $userSettings->setUsername($username);
+            $imageFile = $form->get('profile_picture')->getData();
             if ($imageFile) {
                 $userSettings->setProfilePicture(file_get_contents($imageFile->getPathname()));
             }
