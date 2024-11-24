@@ -1,26 +1,20 @@
 ## DOING:
 
-- Gebruikersinstellingenpagina maken (/user/settings)
-- - Biografie aanpassen
-- - Profielfoto aanpassen
-- - Gebruikersnaam aanpassen
-- - Profiel private / public zetten
 
-- Profiel settings pagina stylen
-- 2FA knop hierheen verplaatsen
-- BUG: Wanneer gebruiker een profielfoto heeft, maar niet een nieuwe invoert; profielfoto verdwijnt
+- Gebruikersprofiel maken (/user)
+- Lijst met alle users
+- - Gebruikersnaam weergegeven bij alle posts
 
+    
 - Alles nieuwe functionaliteit eerst met knopjes op random plekken. Later op juiste plek zetten
 - TODO tags in codebase afhandelen
 
 
 ## TODO:
 
-- Gebruikersprofiel maken (/user)
 
 - Homepage omtoveren tot iets moois: misschien eerst even wireframes voor maken?
 
-- Lijst met alle users
 
 - Wanneer de gebruiker zijn email niet heeft verified mag hij:
 - - NIET in de settings dingen aanpassen
@@ -33,6 +27,11 @@
 - ADMIN paneel maken
 
 ## DONE:
+- Gebruikersinstellingenpagina maken (/user/settings)
+- - Biografie aanpassen
+- - Profielfoto aanpassen
+- - Gebruikersnaam aanpassen
+- Profiel settings pagina stylen
 
 - Gebruiker posts laten maken: foto met optioneel tekst, of andersom
 - Gebruiker posts laten verwijderen

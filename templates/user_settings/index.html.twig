@@ -102,6 +102,12 @@
         <button type="submit" class="btn btn-primary">Save Settings</button>
         {{ form_end(form) }}
 
+        {% if app.user.isTotpAuthenticationEnabled() %}
+            <a href="{{ path('app_2fa_disable') }}" class="btn btn-danger">Disable 2FA</a>
+        {% else %}
+            <a href="{{ path('app_2fa_enable') }}" class="btn btn-primary">Enable 2FA</a>
+        {% endif %}
+
         <a href="{{ path('app_homepage') }}" class="btn btn-info">Back to Home</a>
     </div>
 {% endblock %}
