@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User settings{% endblock %}
+{% block title %}User Settings{% endblock %}
 
 {% block body %}
     <style>
@@ -9,42 +9,60 @@
             padding: 0;
             display: flex;
             justify-content: center;
+            align-items: center;
             height: 100vh;
             background-color: #f0f2f5;
         }
-
         .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
             text-align: center;
-            background-color: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
         }
-
         .profile-picture-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 2rem;
         }
-
-        .profile-picture {
-            width: 100px;
-            height: 100px;
+        .profile-picture, .no-profile-picture {
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             object-fit: cover;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
         }
-
         .no-profile-picture {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background-color: #f0f2f5;
+            background: linear-gradient(45deg, #f3f4f6 25%, #e5e7eb 25%, #e5e7eb 50%, #f3f4f6 50%, #f3f4f6 75%, #e5e7eb 75%, #e5e7eb 100%);
+            background-size: 56.57px 56.57px;
         }
-
         .btn {
-            margin: 5px;
-            padding: 10px 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            margin: 0.5rem;
+        }
+        .btn-primary, .btn-info {
+            color: white;
+        }
+        .alert {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+        }
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .alert-danger {
+            background-color: #f8d7da;
+            color: #721c24;
         }
     </style>
 
@@ -57,12 +75,11 @@
             </div>
         {% endfor %}
         {% for flashError in app.flashes('error') %}
-            <div class="alert alert-danger" role="alert">
+            <div class="alert alert-danger">
                 {{ flashError }}
             </div>
         {% endfor %}
 
-        {{ form_start(form) }}
         <div class="profile-picture-container">
             {% if imagesData['profile_picture'] is not null %}
                 <img src="{{ path('app_user_settings_image', {'id': user.usersettings.id}) }}" class="profile-picture" alt="Profile Picture">
@@ -70,22 +87,21 @@
                 <div class="no-profile-picture"></div>
             {% endif %}
         </div>
-        {{ form_widget(form) }}
+
+        {{ form_start(form) }}
+        <div class="form-group">
+            {{ form_label(form.username, 'Username') }}
+            {{ form_widget(form.username, {'attr': {'class': 'form-control'}}) }}
+
+            {{ form_label(form.bio, 'Bio') }}
+            {{ form_widget(form.bio, {'attr': {'class': 'form-control'}}) }}
+
+            {{ form_label(form.profile_picture, 'Profile Picture') }}
+            {{ form_widget(form.profile_picture, {'attr': {'class': 'form-control'}}) }}
+        </div>
         <button type="submit" class="btn btn-primary">Save Settings</button>
         {{ form_end(form) }}
 
         <a href="{{ path('app_homepage') }}" class="btn btn-info">Back to Home</a>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.clickable-card').forEach(card => {
-                card.addEventListener('click', function(e) {
-                    if (!e.target.closest('.action-buttons')) {
-                        window.location.href = this.dataset.href;
-                    }
-                });
-            });
-        });
-    </script>
 {% endblock %}

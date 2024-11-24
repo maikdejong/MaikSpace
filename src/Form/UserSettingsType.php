@@ -20,6 +20,7 @@ class UserSettingsType extends AbstractType
             ->add('profile_picture', FileType::class, [
                 'required' => false,
                 'data_class' => null,
+                'mapped' => false,
             ]);
     }
 
