@@ -112,6 +112,15 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ post.content }}</h5>
                         </div>
+                        {% if (post.user.userSettings.username) %}
+                            <div class="card-body">
+                                <h5 class="card-title">User: {{ post.user.userSettings.username }}</h5>
+                            </div>
+                        {% else %}
+                            <div class="card-body">
+                                <h5 class="card-title">User: {{ post.user.userIdentifier }}</h5>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             {% endfor %}
