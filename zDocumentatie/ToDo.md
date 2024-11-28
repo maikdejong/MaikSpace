@@ -1,26 +1,18 @@
 ## DOING:
 
 
-- Gebruikersprofiel maken (/user)
-- Lijst met alle users
-- - Gebruikersnaam weergegeven bij alle posts
+- Postindex ombouwen zodat alleen de ingelogde users' posts worden getoond (misschien ook verplaatsen naar homepapge)
 
-    
-- Alles nieuwe functionaliteit eerst met knopjes op random plekken. Later op juiste plek zetten
 - TODO tags in codebase afhandelen
 
 
 ## TODO:
-
 
 - Homepage omtoveren tot iets moois: misschien eerst even wireframes voor maken?
 
 
 - Wanneer de gebruiker zijn email niet heeft verified mag hij:
 - - NIET in de settings dingen aanpassen
-- - GEEN users volgen / ontvolgen
-- - WEL users blokkeren
-- - GEEN public profiel hebben
 
 - Alle dubbele CSS in 1 bestand zetten
 

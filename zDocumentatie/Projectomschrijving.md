@@ -1,5 +1,5 @@
 ### MaikSpace projectomschrijving
-Het doel is om een social media platform te maken met minimale functionaliteit, in vergelijking met moderne sociale media platformen. Gebruikers krijgen de mogelijkheid berichten met elkaar te kunnen delen en reacties op elkaars berichten te plaatsen. Zodat alles wat het biedt er uit gehaald kan worden met zo weinig mogelijk risico tot verslaving.
+Het doel is om een social media platform te maken met minimale functionaliteit, in tegenstelling tot moderne sociale media platformen. Gebruikers krijgen de mogelijkheid berichten met elkaar te delen. Zodat alles wat het biedt er uit gehaald kan worden met zo weinig mogelijk risico tot verslaving.
 De volgende onderdelen zullen worden verzorgd:
 
 #### EISEN:
