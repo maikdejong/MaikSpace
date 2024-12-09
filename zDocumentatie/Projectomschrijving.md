@@ -21,7 +21,7 @@ De volgende onderdelen zullen worden verzorgd:
 - Statistieken bekijken (aantal volgers/volgend, totale likes, totale ontvangen/verzonden reacties)
 - Gebruikers kunnen elkaar volgen / ontvolgen
 - Gebruikers kunnen elkaar blokkeren
-- - Profiel public of private accessible (private = wel vindbaar, niet zichtbaar)
+- Profiel public of private accessible (private = wel vindbaar, niet zichtbaar)
 
 **Feed & filtering**
 - Feed met alle berichten van volgende gebruikers
