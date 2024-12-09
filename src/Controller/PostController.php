@@ -18,8 +18,18 @@ class PostController extends AbstractController
     #[Route('/', name: 'app_post_index', methods: ['GET'])]
     public function index(PostRepository $postRepository): Response
     {
-        $posts = $postRepository->findBy([], [
-            'createdAt' => 'DESC']);
+        $user = $this->getUser();
+        $userRoles = $user->getRoles();
+
+        if (in_array('ROLE_ADMIN', $userRoles)) {
+            $posts = $postRepository->findBy([], ['createdAt' => 'DESC']);
+        } else {
+            $posts = $postRepository->findBy(
+                ['user' => $user],
+                ['createdAt' => 'DESC']
+            );
+        }
+
         $imagesData = [];
 
         foreach ($posts as $post) {
@@ -82,9 +92,12 @@ class PostController extends AbstractController
     #[Route('/{id}/edit', name: 'app_post_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Post $post, EntityManagerInterface $entityManager): Response
     {
-        // Check if user is the owner of the post
-        if ($post->getUser() !== $this->getUser()) {
-            throw $this->createAccessDeniedException('Je kunt alleen je eigen posts bewerken.');
+        $user = $this->getUser();
+        $userRoles = $user->getRoles();
+
+        // Check if user is admin or owner of the post
+        if (!in_array('ROLE_ADMIN', $userRoles) && $post->getUser() !== $user) {
+            $this->addFlash('error', 'Je kunt alleen je eigen posts bewerken.');
         }
 
         $form = $this->createForm(PostType::class, $post);
@@ -111,9 +124,12 @@ class PostController extends AbstractController
     #[Route('/{id}', name: 'app_post_delete', methods: ['POST'])]
     public function delete(Request $request, Post $post, EntityManagerInterface $entityManager): Response
     {
-        // Check if user is the owner of the post
-        if ($post->getUser() !== $this->getUser()) {
-            throw $this->createAccessDeniedException('Je kunt alleen je eigen posts verwijderen.');
+        $user = $this->getUser();
+        $userRoles = $user->getRoles();
+
+        /// Check if user is admin or owner of the post
+        if (!in_array('ROLE_ADMIN', $userRoles) && $post->getUser() !== $user) {
+            $this->addFlash('error', 'Je kunt alleen je eigen posts verwijderen.');
         }
 
         if ($this->isCsrfTokenValid('delete'.$post->getId(), $request->request->get('_token'))) {

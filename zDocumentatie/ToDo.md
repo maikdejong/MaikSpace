@@ -1,12 +1,7 @@
 ## DOING:
 
-- FormTypes alleen img
 
-- ROLE_ADMIN checks op nodige plekken.
-- - wijzigen en verwijderen van posts
 
-- Post Index: User = admin? show all posts. in de twig: wanneer admin: username onder post weergeven.
-- - Verplaatsen naar de nu lelijke homepage evt.
 
 
 
@@ -20,6 +15,10 @@
 
 
 ## DONE:
+- ROLE_ADMIN checks op nodige plekken.
+- - wijzigen en verwijderen van posts
+- Post Index: User = admin? show all posts. in de twig: wanneer admin: username onder post weergeven.
+
 - Gebruikersinstellingenpagina maken (/user/settings)
 - - Biografie aanpassen
 - - Profielfoto aanpassen

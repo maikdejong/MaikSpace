@@ -36,7 +36,6 @@
 
         .card:hover {
             background-color: lightgray;
-            font-size: 18px;
         }
 
         .card:hover .action-buttons {
@@ -57,7 +56,11 @@
     </style>
 
     <div class="container">
-        <h1>Posts</h1>
+        {% if app.user.roles[0] == 'ROLE_ADMIN' %}
+            <h1>ADMIN panel</h1>
+        {% else %}
+            <h1>Posts</h1>
+        {% endif %}
 
         {% for flash in app.flashes('success') %}
             <div class="alert alert-success">
@@ -111,6 +114,9 @@
                         {% endif %}
                         <div class="card-body">
                             <h5 class="card-title">{{ post.content }}</h5>
+                            {% if app.user.roles[0] == 'ROLE_ADMIN' %}
+                                <p class="card-text">Posted by: {{ post.user.getUseridentifier() }}</p>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
