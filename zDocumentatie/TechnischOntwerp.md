@@ -1,13 +1,16 @@
 ## Technisch ontwerp
 
 #### Nodige software om dit project te realiseren:
-- php 8.2.26
-- symfony 7.1.9
+- PHP 8.2.26
+- Symfony 7.1.9
 - Composer
 - Doctrine ORM
 - Bootstrap
 - Twig
 - MySQL
+- PhpMyAdmin
+- Apache2
+- MailHog
 - Git/GitHub
 - PhpStorm IDE
 
