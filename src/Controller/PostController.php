@@ -18,7 +18,8 @@ class PostController extends AbstractController
     #[Route('/', name: 'app_post_index', methods: ['GET'])]
     public function index(PostRepository $postRepository): Response
     {
-        $posts = $postRepository->findBy([], ['createdAt' => 'DESC']);
+        $posts = $postRepository->findBy([], [
+            'createdAt' => 'DESC']);
         $imagesData = [];
 
         foreach ($posts as $post) {

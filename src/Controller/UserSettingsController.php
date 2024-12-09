@@ -16,12 +16,6 @@ class UserSettingsController extends AbstractController
     #[Route('/user-settings', name: 'app_user_settings')]
     public function edit(Request $request, EntityManagerInterface $entityManager): Response
     {
-        // Check if user is verified
-        if (!$this->getUser()->isVerified()) {
-            $this->addFlash('error', 'You must verify your email first.');
-            return $this->redirectToRoute('app_post_index');
-        }
-
         $user = $this->getUser();
         $userSettings = $this->getUser()->getUserSettings();
         if (!$userSettings) {
@@ -44,6 +38,13 @@ class UserSettingsController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // Check if user is verified
+            if (!$this->getUser()->isVerified()) {
+                $this->addFlash('error', 'You must verify your email first.');
+
+                return $this->redirectToRoute('app_user_settings');
+            }
+
             $username = $form->get('username')->getData();
             $bio = $form->get('bio')->getData();
 
