@@ -1,9 +1,13 @@
 ## DOING:
 
+- FormTypes alleen img
 
-- Postindex ombouwen zodat alleen de ingelogde users' posts worden getoond (misschien ook verplaatsen naar homepapge)
+- ROLE_ADMIN checks op nodige plekken.
+- - wijzigen en verwijderen van posts
 
-- TODO tags in codebase afhandelen
+- Post Index: User = admin? show all posts. in de twig: wanneer admin: username onder post weergeven.
+- - Verplaatsen naar de nu lelijke homepage evt.
+
 
 
 ## TODO:
@@ -11,12 +15,9 @@
 - Homepage omtoveren tot iets moois: misschien eerst even wireframes voor maken?
 
 
-- Wanneer de gebruiker zijn email niet heeft verified mag hij:
+- Wanneer de gebruiker zijn email niet heeft verified mag hij:  
 - - NIET in de settings dingen aanpassen
 
-- Alle dubbele CSS in 1 bestand zetten
-
-- ADMIN paneel maken
 
 ## DONE:
 - Gebruikersinstellingenpagina maken (/user/settings)

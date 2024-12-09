@@ -24,8 +24,11 @@ class UserSettingsController extends AbstractController
 
         $user = $this->getUser();
         $userSettings = $this->getUser()->getUserSettings();
-
-        $imagesData = [];
+        if (!$userSettings) {
+            $userSettings = new UserSettings();
+            /** @var User $user */
+            $userSettings->setUser($user);
+        }
 
         if ($userSettings->getProfilePicture()) {
             $imagesData = [
@@ -43,12 +46,6 @@ class UserSettingsController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $username = $form->get('username')->getData();
             $bio = $form->get('bio')->getData();
-
-            if (!$userSettings) {
-                $userSettings = new UserSettings();
-                /** @var User $user */
-                $userSettings->setUser($user);
-            }
 
             $userSettings->setBio($bio);
             $userSettings->setUsername($username);

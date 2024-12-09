@@ -46,11 +46,12 @@
         {% endif %}
 
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-            {% if app.user.usersettings.getUsername() %}
+            {% if app.user.userSettings.getUsername() is defined %}
                 <h1>Welcome to the homepage, {{ app.user.usersettings.getUsername() }}!</h1>
-            {% elseif app.user %}
-                <h1>Welcome to the homepage, {{ app.user }}!</h1>
+            {% else %}
+                <h1>Welcome to the homepage, {{ app.user.getUserIdentifier() }}!</h1>
             {% endif %}
+
             <a href="{{ path('app_logout') }}" class="btn btn-danger">Logout</a>
             <a href="{{ path('app_post_index') }}" class="btn btn-info">Post index</a>
             <a href="{{ path('app_user_settings') }}" class="btn btn-info">User settings</a>
